@@ -12,7 +12,7 @@ V_CRUISE_MIN = 8
 V_CRUISE_MAX = 145
 V_CRUISE_UNSET = 255
 V_CRUISE_INITIAL = 40
-V_CRUISE_INITIAL_EXPERIMENTAL_MODE = 105
+V_CRUISE_INITIAL_EXPERIMENTAL_MODE = 60
 IMPERIAL_INCREMENT = round(CV.MPH_TO_KPH, 1)  # round here to avoid rounding errors incrementing set speed
 
 ButtonEvent = car.CarState.ButtonEvent
@@ -47,8 +47,8 @@ class VCruiseHelper:
     self.v_cruise_kph_last = self.v_cruise_kph
 
     custom_acc_increment_config = custom_acc_increment_config or {}
-    self.custom_acc_short_increment = custom_acc_increment_config.get("short_press", 1)
-    self.custom_acc_long_increment = custom_acc_increment_config.get("long_press", 10 if is_metric else 5)
+    self.custom_acc_short_increment = custom_acc_increment_config.get("short_press", 5)
+    self.custom_acc_long_increment = custom_acc_increment_config.get("long_press", 1)
 
     if CS.cruiseState.available:
       if not self.CP.pcmCruise:
